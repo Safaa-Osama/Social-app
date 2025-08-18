@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../Navbar/NavbarApp';
 import Footer from '../Footer/Footer';
 import { Outlet } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ export default function MainLayout() {
   return (
     <>
       <Navbar />
-      <main className="min-h-80">
+      <main className="bg-gray-100">
         <Outlet />
       </main>
       <Footer />

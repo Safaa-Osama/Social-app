@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { sendData } from "../Services/authService";
 import { regSchema } from "../Schema/RegisterSchema";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -43,7 +43,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="mx-auto max-w-lg bg-linear-to-r from-cyan-300 to-gray-400 shadow-2xl py-2 m-6  rounded-lg">
+      <div className="mx-auto max-w-lg bg-white shadow-2xl py-2 m-6  rounded-lg">
         <h1 className="font-bold px-6 text-2xl">Register Now</h1>
         <form
           onSubmit={handleSubmit(signUp)}
@@ -109,7 +109,10 @@ export default function Register() {
             Register
           </Button>
 
-          {apiresponse && <span>{apiresponse}</span>}
+          <p className="text-center">If you have an acount <Link to='/login' className="text-blue-400">SignIn</Link> </p>
+
+          {apiresponse =='success'? <span className="text-center text-green-600">Success</span>
+          : apiresponse && <span className="text-center text-red-600"> {apiresponse} </span>}
         </form>
       </div>
     </>
