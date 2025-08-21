@@ -6,6 +6,9 @@ import Postdetails from "./Pages/Postdetails";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Post from "./Components/Posts/Post";
+import AuthContextProvider from "./Components/Context/AuthContext";
+
 
 const router = createBrowserRouter([
   {
@@ -14,7 +17,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "profile", element: <Profile /> },
-      { path: "post-details", element: <Postdetails /> },
+      { path: "post-details/:id ", element: <Postdetails /> },
+      { path: "post", element: <Post /> },
+      { path: "profile", element: <Profile /> },
+
+
     ],
   },
   {
@@ -29,6 +36,11 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <RouterProvider router={router} />
+<AuthContextProvider>
+      <RouterProvider router={router}>
+
+      </RouterProvider>
+</AuthContextProvider>
+
   );
 }

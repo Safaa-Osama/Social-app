@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Input, Button } from "@heroui/react";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { logSchema } from '../Schema/loginSchema';
 import { Link, useNavigate } from 'react-router-dom';
 import { sendSignInData } from '../Services/authService';
+import { AuthContext } from '../Components/Context/AuthContext';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const [apiresponse, setapiResponse] = useState('');
 
   let navigate = useNavigate();
+   const {setUserToken} = useContext(AuthContext)
+
 
 
   let { handleSubmit, register, formState: { errors }, } = useForm({
@@ -26,12 +29,14 @@ export default function Login() {
     setLoading(true);
 
     const res = await sendSignInData(userData);
-    if (res.message == 'success') {
-      localStorage.setItem('token', res.token)
-      navigate('/')
-    }
-    else {
-      setapiResponse(res.errors);
+    console.log( res);
+
+     if (res.message === 'success') {
+      setUserToken(res.token);
+      localStorage.setItem('token', res.token);
+      navigate('/');
+    } else {
+      setapiResponse(res.error);
     }
 
     setLoading(false);
