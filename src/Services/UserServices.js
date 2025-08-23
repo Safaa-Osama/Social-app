@@ -5,10 +5,10 @@ const data = await axios.patch('https://linked-posts.routemisr.com/users/change-
 }
 
 
-export async function GetUserPostApi(){
+export async function getUserPostsApi(){
     try{
         const headers = { token: userToken }
-        const {data} = await axios.post('https://linked-posts.routemisr.com/users/664bcf3e33da217c4af21f00/posts?limit=3'
+        const {data} = await axios.get('https://linked-posts.routemisr.com/users/users/profile-data '
             ,  { headers}
 
         );

@@ -10,6 +10,7 @@ export default function PostHeader({userName, photo, date}) {
               <p className="text-xs text-gray-500">{date}</p>
             </div>
           </div>
+          
         </div>
   </>
 }

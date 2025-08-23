@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.0",
+    "@heroui/dropdown": "^2.3.24",
     "@heroui/navbar": "^2.2.22",
     "@heroui/react": "^2.8.2",
     "@hookform/resolvers": "^5.2.1",

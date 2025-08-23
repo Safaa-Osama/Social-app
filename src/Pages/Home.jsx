@@ -11,7 +11,7 @@ export default function Home() {
 
   const [allPosts, setAllPosts] = useState([])
   const [loading, setLoading] = useState(true)
-  const {userToken} = useContext(AuthContext)
+  const { userToken, userData } = useContext(AuthContext)
 
 
   async function getAllPosts() {
@@ -26,16 +26,16 @@ export default function Home() {
   }
 
   useEffect(() => {
-    getAllPosts();}, []);
+    getAllPosts();
+  }, []);
 
 
   return <>
     <main className='min-h-screen'>
-<CreatePost/>
-
+      <CreatePost callBack={getAllPosts} />
       {
         allPosts?.length ? allPosts.map((post) => <Post key={post._id} post={post} numOfComments={1}/>)
-         : <LoadingScreen/>
+          : <LoadingScreen />
       }
     </main>
 

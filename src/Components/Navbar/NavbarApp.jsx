@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
+import React, { useContext } from "react";
+import { Navbar, NavbarBrand, NavbarItem } from "@heroui/navbar";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@heroui/react";
 import profile from "../../assets/img/user..png";
@@ -7,13 +7,16 @@ import { AuthContext } from "../Context/AuthContext";
 
 export default function NavbarA() {
   const navigate = useNavigate();
+  let { userToken, isLoggedIn, setIsLoggedIn, setUserData} = useContext(AuthContext)
+
   function logOut() {
     localStorage.removeItem("token");
     setUserToken('');
+    setIsLoggedIn(null);
+    setUserData(null)
     navigate("/login");
     }
 
-  const { userToken } = useContext(AuthContext);
   return (
     <>
       <Navbar className="bg-gray-200">
