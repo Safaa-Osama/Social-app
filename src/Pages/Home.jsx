@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { getAllPostsApi } from '../Services/PostServices'
 import Post from '../Components/Posts/Post';
 import LoadingScreen from '../Components/LoadingScreen/LoadingScreen';
-import CeratePost from '../Components/Posts/CeratePost';
+import CreatePost from '../Components/Posts/CreatePost';
+import { AuthContext } from '../Components/Context/AuthContext';
 
 
 
@@ -10,10 +11,12 @@ export default function Home() {
 
   const [allPosts, setAllPosts] = useState([])
   const [loading, setLoading] = useState(true)
+  const {userToken} = useContext(AuthContext)
+
 
   async function getAllPosts() {
     setLoading(true);
-    const data = await getAllPostsApi();
+    const data = await getAllPostsApi(userToken);
     setAllPosts(data.posts);
 
     if (data.message) {
@@ -27,10 +30,11 @@ export default function Home() {
 
 
   return <>
-<CeratePost/>
     <main className='min-h-screen'>
+<CreatePost/>
+
       {
-        allPosts.length ? allPosts.map((post) => <Post key={post._id} post={post} />)
+        allPosts?.length ? allPosts.map((post) => <Post key={post._id} post={post} numOfComments={1}/>)
          : <LoadingScreen/>
       }
     </main>

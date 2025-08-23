@@ -1,11 +1,28 @@
 import axios from "axios";
 
-const headers = { token: localStorage.getItem('token') }
 
-export async function getAllPostsApi() {
+
+export async function getAllPostsApi(userToken) {
+    
     try {
+        const headers = { token: userToken }
         const { data } = await axios.get('https://linked-posts.routemisr.com/posts?limit=10',
-            { headers }
+            { headers}
+        )
+
+        return data;
+    }
+    catch (err) {
+        console.log(err.response.data);
+        return err.response.data;
+    }
+}
+
+export async function getSinglePostsApi(postId,userToken) {
+    try {
+        const headers = { token: userToken }
+        const { data } = await axios.get('https://linked-posts.routemisr.com/posts/' + postId,
+            { headers}
         )
         return data;
     }
@@ -15,14 +32,16 @@ export async function getAllPostsApi() {
     }
 }
 
-export async function getSinglePostsApi(postId) {
-    try {
-        const { data } = await axios.get('https://linked-posts.routemisr.com/posts/' + postId,
-            { headers }
-        )
+export async function createPostApi(formData,userToken){
+    try{
+        const headers = { token: userToken }
+        const {data} = await axios.post('https://linked-posts.routemisr.com/posts', formData
+            ,  { headers}
+
+        );
         return data;
     }
-    catch (err) {
+      catch (err) {
         console.log(err.response.data);
         return err.response.data;
     }

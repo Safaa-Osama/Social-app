@@ -34,6 +34,7 @@ export default function Login() {
      if (res.message === 'success') {
       setUserToken(res.token);
       localStorage.setItem('token', res.token);
+      
       navigate('/');
     } else {
       setapiResponse(res.error);

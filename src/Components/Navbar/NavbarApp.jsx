@@ -16,9 +16,9 @@ export default function NavbarA() {
   const { userToken } = useContext(AuthContext);
   return (
     <>
-      <Navbar>
+      <Navbar className="bg-gray-200">
         <NavbarBrand>
-          <p className="font-bold text-inherit">Social-app</p>
+         <Link to="/"><p className="font-bold text-inherit">Postify</p></Link> 
         </NavbarBrand>
 
         {userToken ? (
