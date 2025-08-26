@@ -61,7 +61,7 @@ export default function Login() {
         <Input isInvalid={Boolean(errors.email)} errorMessage={errors.email?.message} variant="bordered" label="Email"
           {...register("email")} type="email" />
         <Input isInvalid={Boolean(errors.password)} errorMessage={errors.password?.message} variant="bordered" label="password"
-          {...register("password")} type="password" onChange={() => setLoginError('')}/>
+          {...register("password",{onChange: ()=>setLoginError('')})} type="password"/>
         <Button isLoading={loading} type='submit' variant="faded" className='bg-black text-white text-xl'>Login</Button>
         <p className='text-center'>If you haven't an acount <Link to='/register' className="text-blue-400">SignUp</Link> </p>
 

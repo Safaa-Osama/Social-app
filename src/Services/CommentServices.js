@@ -44,7 +44,7 @@ export async function getPostCommentsApi(postId) {
 export async function updateCommentsApi(content, commenttId, userToken) {
     try {
         const headers = { token: userToken }
-        const { data } = await axios.put(`https://linked-posts.routemisr.com/comments/${commenttId}` , content, 
+        const {data} = await axios.put(`https://linked-posts.routemisr.com/comments/${commenttId}` , content, 
             {headers})
         if (data.message == 'success') {
             return data.comments;
