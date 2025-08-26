@@ -5,7 +5,7 @@ import axios from "axios";
 export async function createCommentApi(content, post, userToken) {
     try {
         const headers = { token: userToken }
-        console.log(headers)
+
         const { data } = await axios.post('https://linked-posts.routemisr.com/comments',
             { content, post },
             { headers })
@@ -41,10 +41,11 @@ export async function getPostCommentsApi(postId) {
 
 }
 
-export async function updateCommentsApi(content, commenttId) {
+export async function updateCommentsApi(content, commenttId, userToken) {
     try {
         const headers = { token: userToken }
-        const { data } = await axios.put('https://linked-posts.routemisr.com/comments' + commenttId)
+        const { data } = await axios.put(`https://linked-posts.routemisr.com/comments/${commenttId}` , content, 
+            {headers})
         if (data.message == 'success') {
             return data.comments;
         }
@@ -57,14 +58,14 @@ export async function updateCommentsApi(content, commenttId) {
 
 }
 
-export async function deleteCommentsApi(commenttId) {
+export async function deleteCommentsApi(commenttId,userToken) {
     try {
         const headers = { token: userToken }
         const { data } = await axios.delete(`https://linked-posts.routemisr.com/comments/` + commenttId,
             { headers })
 
         if (data.message == 'success') {
-            return data.comments;
+            return data;
         }
     }
 

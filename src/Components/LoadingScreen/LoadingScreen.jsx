@@ -13,7 +13,7 @@ export default function LoadingScreen() {
   };
 
   return (
-    <div className="flex flex-col gap-3 mx-auto max-w-md mt-3">
+    <div className="flex flex-col gap-3 mx-auto max-w-2xl mt-3">
       <Card className=" space-y-5 p-4" radius="lg">
 
         

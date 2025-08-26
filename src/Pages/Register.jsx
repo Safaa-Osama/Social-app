@@ -43,7 +43,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="mx-auto max-w-lg bg-white shadow-2xl py-2 m-6  rounded-lg">
+      <div className="mx-auto min-w-lg bg-white shadow-2xl py-2 m-6  rounded-lg">
         <h1 className="font-bold px-6 text-2xl">Register Now</h1>
         <form
           onSubmit={handleSubmit(signUp)}
@@ -105,7 +105,7 @@ export default function Register() {
             </Select>
           </div>
 
-          <Button type="submit" variant="faded">
+          <Button type="submit" variant="faded" className='bg-black text-white text-xl'>
             Register
           </Button>
 

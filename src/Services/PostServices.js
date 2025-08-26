@@ -34,11 +34,10 @@ export async function getSinglePostsApi(postId,userToken) {
 export async function createPostApi(formData,userToken){
     try{
         const headers = { token: userToken }
-        const {data} = await axios.post('https://linked-posts.routemisr.com/posts?', formData
+        const {data} = await axios.post('https://linked-posts.routemisr.com/posts', formData
             ,  { headers}
 
         );
-        console.log(data)
         return data;
     }
       catch (err) {
@@ -48,14 +47,14 @@ export async function createPostApi(formData,userToken){
 }
 
 
-export async function UpdatePostApi(formData,userToken){
+export async function updatePostApi(postId,formData,userToken){
     try{
         const headers = { token: userToken }
-        const {data} = await axios.put('https://linked-posts.routemisr.com/posts/66875b3b006c4ff191a61a89', formData
+        const {data} = await axios.put(`https://linked-posts.routemisr.com/posts/${postId}`, formData
             ,  { headers}
 
         );
-        console.log(data)
+
         return data;
     }
       catch (err) {
@@ -65,14 +64,13 @@ export async function UpdatePostApi(formData,userToken){
 }
 
 
-export async function deletePostApi(userToken){
+export async function deletePostApi(postId,userToken){
     try{
         const headers = { token: userToken }
-        const {data} = await axios.delete('https://linked-posts.routemisr.com/posts'+postId
+        const {data} = await axios.delete('https://linked-posts.routemisr.com/posts/'+postId
             ,  { headers}
 
         );
-        console.log(data)
         return data;
     }
       catch (err) {

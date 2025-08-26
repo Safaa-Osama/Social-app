@@ -9,6 +9,8 @@ import { HeroUIProvider } from "@heroui/react";
 
 const root = createRoot(document.getElementById('root'));
 root.render(
+    <>
+    
     <HeroUIProvider>
         {/* <AuthContextProvider> */}
 
@@ -16,4 +18,6 @@ root.render(
 
         {/* </AuthContextProvider> */}
     </HeroUIProvider>
+    </>
+    
 );
